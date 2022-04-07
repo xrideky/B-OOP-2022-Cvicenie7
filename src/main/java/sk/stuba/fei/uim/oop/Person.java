@@ -1,8 +1,5 @@
 package sk.stuba.fei.uim.oop;
 
-
-
-
 import java.util.List;
 
 public class Person {
