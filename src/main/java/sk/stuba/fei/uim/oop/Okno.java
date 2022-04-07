@@ -4,8 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
-public class Okno extends JFrame implements ActionListener {
+public class Okno extends JFrame {
     public Okno() throws HeadlessException {
         super();
         this.setSize(400,400);
@@ -13,14 +15,16 @@ public class Okno extends JFrame implements ActionListener {
 
         JButton b = new JButton("EXIT");
         this.add(b);
-        b.addActionListener(this);
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                dispose();
+                System.exit(0);
+            }
+        });
 
         this.setVisible(true); //malo by to byt na konci pri inicializacii
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        this.dispose();
-        System.exit(0);
-    }
+
 }
